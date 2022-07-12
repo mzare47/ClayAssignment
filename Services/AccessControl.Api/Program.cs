@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Shared.Lib.Extensions;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -71,8 +72,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//Seed Db
+app.MigrateDatabase<ClayDbContext>((context, services) =>
+{
+    var logger = services.GetService<ILogger<ClayDbContextSeed>>();
+    ClayDbContextSeed
+        .SeedAsync(context, logger)
+        .Wait();
+});
+
 app.UseHttpsRedirection();
 
+// Authentication & Authorization
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
