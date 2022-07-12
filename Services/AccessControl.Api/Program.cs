@@ -35,6 +35,7 @@ builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>))
 builder.Services.AddScoped<ILocksRepository, LocksRepository>();
 builder.Services.AddScoped<IAccessorsRepository, AccessorsRepository>();
 builder.Services.AddScoped<IAccessesRepository, AccessesRepository>();
+builder.Services.AddScoped<ILocksAccessorsRepository, LocksAccessorsRepository>();
 
 // For Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
