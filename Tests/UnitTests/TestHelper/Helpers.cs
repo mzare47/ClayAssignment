@@ -158,5 +158,54 @@ namespace UnitTests.TestHelper
             return GetPreconfiguredUsers()
                 .First(l => l.Id.Equals("d0fd01e0-a685-46f3-adec-3e4e0e8786f3"));
         }
+
+        private static IEnumerable<Access> GetPreconfiguredAccesses()
+        {
+            var accessor1ToOfficeLock = new Access()
+            {
+                AccessId = new Guid("c930b5c9-a13f-445d-8602-a528cd683fee"),
+                AccessorId = "a23072bc-9150-429d-9445-cc03f8f19047", //Accessor1
+                LockId = new Guid("56c66421-d893-4d27-867d-ae15483f9d76"), //Office Lock
+                IsSuccessful = true,
+            };
+
+            var accessor2ToTunnelLock = new Access()
+            {
+                AccessId = new Guid("c2cb4d78-fb15-44cb-8816-d079edcda676"),
+                LockId = new Guid("56c66421-d893-4d27-867d-ae15483f9d76"), //Office Lock
+                AccessorId = "95e7e4ff-3708-4645-91f0-4f20325869a3", //Accessor2
+                IsSuccessful = false,
+                Reason = $"You are not allowed to open Office Lock"
+            };
+
+            var accessor3ToTunnelLock = new Access()
+            {
+                AccessId = new Guid("4812c902-cb04-418c-ab34-11595e203056"),
+                LockId = new Guid("10f43841-21db-4ef5-9fd2-d79190bc3b39"), //Tunnel Lock
+                AccessorId = "d0fd01e0-a685-46f3-adec-3e4e0e8786f3", //Accessor3
+                Reason = "You are not allowed to open any locks"
+            };
+
+            var accessor2ToUnopenableLock = new Access()
+            {
+                AccessId = new Guid("ef7536bc-4234-4f99-ae14-8887c9fa25de"),
+                LockId = new Guid("e0a686ee-79f5-471f-a07e-f7928ee99304"), //Unopenable Lock
+                AccessorId = "95e7e4ff-3708-4645-91f0-4f20325869a3", //Accessor2
+                Reason = "Unopenable Lock is not Unlockable"
+            };
+
+            return new List<Access>()
+            {
+                accessor1ToOfficeLock,
+                accessor2ToTunnelLock,
+                accessor3ToTunnelLock,
+                accessor2ToUnopenableLock,
+            };
+        }
+
+        public static List<Access> GetAllAccesses()
+        {
+            return GetPreconfiguredAccesses().ToList();
+        }
     }
 }
