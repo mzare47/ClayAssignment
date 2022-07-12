@@ -33,6 +33,7 @@ else
 //Add Repositories
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
 builder.Services.AddScoped<ILocksRepository, LocksRepository>();
+builder.Services.AddScoped<IAccessorsRepository, AccessorsRepository>();
 
 // For Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
