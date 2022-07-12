@@ -14,6 +14,8 @@ namespace AccessControl.Api.Data
             _httpContextAccessor = httpContextAccessor;
         }
 
+        public DbSet<Lock> Locks { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
