@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Shared.Lib.ExceptionHandling;
 using Shared.Lib.Extensions;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -86,6 +87,9 @@ app.UseHttpsRedirection();
 // Authentication & Authorization
 app.UseAuthentication();
 app.UseAuthorization();
+
+// global error handler
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllers();
 
