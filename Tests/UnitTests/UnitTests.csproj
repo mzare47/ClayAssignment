@@ -16,4 +16,9 @@
     <PackageReference Include="coverlet.collector" Version="3.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Services\AccessControl.Api\AccessControl.Api.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.Lib\Shared.Lib.csproj" />
+  </ItemGroup>
+
 </Project>

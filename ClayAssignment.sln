@@ -15,6 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{28E73A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Lib", "Shared\Shared.Lib\Shared.Lib.csproj", "{59DAC13C-205F-4D5B-843C-AF5FED86806B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{68C980F2-72BB-4B22-8DED-AF037D6C7A0A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{EEFD9792-7213-42DE-8C58-CF0D61EA071F}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build-and-test.yaml = .github\workflows\build-and-test.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +48,7 @@ Global
 		{5E8265F9-D132-4BB4-8966-2D4AE37C0FE0} = {E62CB2BD-3706-4468-A71A-AFFDCF51208E}
 		{E63432EC-6463-4D36-8645-BA23DD8C6D7C} = {864B3C3A-D81B-4ADA-BA40-317BD7A56FBD}
 		{59DAC13C-205F-4D5B-843C-AF5FED86806B} = {28E73A9B-C4F5-4AC1-9AFB-25BC6DB52CCD}
+		{EEFD9792-7213-42DE-8C58-CF0D61EA071F} = {68C980F2-72BB-4B22-8DED-AF037D6C7A0A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5949347A-CA01-4D48-8792-CA6B0BFFE051}
