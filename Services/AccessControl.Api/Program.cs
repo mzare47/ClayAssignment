@@ -1,5 +1,7 @@
 using AccessControl.Api.Data;
 using AccessControl.Api.Models.Entity;
+using AccessControl.Api.Repositories;
+using AccessControl.Api.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +29,10 @@ else
     builder.Services.AddDbContext<ClayDbContext>(options =>
                     options.UseSqlServer(configuration.GetConnectionString("ClayDbConnectionString")));
 }
+
+//Add Repositories
+builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
+builder.Services.AddScoped<ILocksRepository, LocksRepository>();
 
 // For Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
