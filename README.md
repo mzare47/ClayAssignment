@@ -12,7 +12,7 @@ I have implemented below features over the **ClayAssignment** repository:
 * SOLID Pattern Implementation
 * Repository Pattern Implementation
 * Swagger Open API implementation
-* JWT Authentication And Authorization In With Identity Framework 
+* JWT Authentication And Authorization with Identity Framework 
 
 #### UnitTests which includes: 
 * Using NUnit and Moq framework for unit testing
