@@ -11,6 +11,7 @@ using System.Text;
 
 namespace AccessControl.Api.Controllers
 {
+    [ApiVersion("1.0")]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthenticateController : ControllerBase
