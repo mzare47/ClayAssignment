@@ -10,13 +10,42 @@ namespace AccessControl.Api.Data
         {
             if (!clayDbContext.Users.Any())
             {
+                await clayDbContext.Locks.AddRangeAsync(GetPreconfiguredLocks());
                 await clayDbContext.Users.AddRangeAsync(GetPreconfiguredUsers());
                 await clayDbContext.Roles.AddRangeAsync(GetPreconfiguredRoles());
                 await clayDbContext.UserRoles.AddRangeAsync(GetPreconfiguredUserRoles());
+                await clayDbContext.LocksAccessors.AddRangeAsync(GetPreconfiguredLocksAccessors());
                 await clayDbContext.SaveChangesAsync();
 
                 logger.LogInformation($"Seed database associated with context {typeof(ClayDbContext).Name}");
             }
+        }
+
+        private static IEnumerable<Lock> GetPreconfiguredLocks()
+        {
+            var tunnelLock = new Lock()
+            {
+                LockId = new Guid("10f43841-21db-4ef5-9fd2-d79190bc3b39"),
+                Name = "Tunnel Lock",
+                Location = "Tunnel Lock Location",
+                IsLocked = true,
+                AllowUnlocking = true,
+            };
+
+            var officeLock = new Lock()
+            {
+                LockId = new Guid("56c66421-d893-4d27-867d-ae15483f9d76"),
+                Name = "Office Lock",
+                Location = "Office Lock Location",
+                IsLocked = true,
+                AllowUnlocking = true,
+            };
+
+            return new List<Lock>
+            {
+                tunnelLock,
+                officeLock
+            };
         }
 
         private static IEnumerable<ApplicationUser> GetPreconfiguredUsers()
@@ -111,6 +140,36 @@ namespace AccessControl.Api.Data
             };
         }
 
+        private static IEnumerable<LockAccessor> GetPreconfiguredLocksAccessors()
+        {
+            var accessor1ToOfficeLock = new LockAccessor()
+            {
+                LockAccessorId = new Guid("67359ea47c394630ac7f7fc723205ded"),
+                LockId = new Guid("56c66421-d893-4d27-867d-ae15483f9d76"),
+                AccessorId = "a23072bc-9150-429d-9445-cc03f8f19047",
+            };
+
+            var accessor1ToTunnelLock = new LockAccessor()
+            {
+                LockAccessorId = new Guid("1202bd25-36c3-476d-b0e9-7913db980068"),
+                LockId = new Guid("10f43841-21db-4ef5-9fd2-d79190bc3b39"),
+                AccessorId = "a23072bc-9150-429d-9445-cc03f8f19047"
+            };
+
+            var accessor2ToTunnelLock = new LockAccessor()
+            {
+                LockAccessorId = new Guid("e009c4d6-18eb-4a3b-a4c6-af7046057705"),
+                LockId = new Guid("10f43841-21db-4ef5-9fd2-d79190bc3b39"),
+                AccessorId = "95e7e4ff-3708-4645-91f0-4f20325869a3"
+            };
+
+            return new List<LockAccessor>
+            {
+                accessor1ToOfficeLock,
+                accessor1ToTunnelLock,
+                accessor2ToTunnelLock
+            };
+        }
 
 
     }

@@ -75,14 +75,20 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+builder.Services.AddCors(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins(
+            "https://localhost:6052",
+            "http://localhost:5002")
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
+
+var app = builder.Build();
 
 //Seed Db
 app.MigrateDatabase<ClayDbContext>((context, services) =>
@@ -93,11 +99,21 @@ app.MigrateDatabase<ClayDbContext>((context, services) =>
         .Wait();
 });
 
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 // Authentication & Authorization
 app.UseAuthentication();
 app.UseAuthorization();
+
 
 // global error handler
 app.UseMiddleware<ExceptionHandlingMiddleware>();
