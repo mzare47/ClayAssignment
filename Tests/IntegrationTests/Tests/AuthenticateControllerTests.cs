@@ -10,6 +10,8 @@ using System.Security.Claims;
 
 namespace IntegrationTests.Tests
 {
+    [CollectionDefinition("Non-Parallel Collection", DisableParallelization = true)]
+    [Collection("Non-Parallel Collection")]
     public class AuthenticateControllerTests : IClassFixture<AccessControlApiApplicationFactory>
     {
         private readonly HttpClient _client;

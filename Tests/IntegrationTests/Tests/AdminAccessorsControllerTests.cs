@@ -6,6 +6,8 @@ using System.Net.Http.Headers;
 
 namespace IntegrationTests.Tests
 {
+    [CollectionDefinition("Non-Parallel Collection", DisableParallelization = true)]
+    [Collection("Non-Parallel Collection")]
     public class AdminAccessorsControllerTests : IClassFixture<AccessControlApiApplicationFactory>
     {
         private readonly AccessControlApiApplicationFactory _factory;
