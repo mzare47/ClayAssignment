@@ -265,5 +265,23 @@ namespace UnitTests.TestHelper
         {
             return GetPreconfiguredLocksAccessors().ToList();
         }
+
+        public static List<ApplicationUser> GetLockAccessors(string lockId)
+        {
+            var accessorIds = GetPreconfiguredLocksAccessors()
+                                .Where(x => x.LockId.ToString().Equals(lockId))
+                                .Select(x => x.AccessorId)
+                                .ToList();
+            return GetAllAccessors().Where(x => accessorIds.Contains(x.Id)).ToList();
+        }
+
+        public static List<Lock> GetAccessorLocks(string accessorId)
+        {
+            var lockIds = GetPreconfiguredLocksAccessors()
+                                .Where(x => x.AccessorId.Equals(accessorId))
+                                .Select(x => x.LockId.ToString())
+                                .ToList();
+            return GetAllLocks().Where(x => lockIds.Contains(x.LockId.ToString())).ToList();
+        }
     }
 }
