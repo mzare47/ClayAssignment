@@ -207,5 +207,63 @@ namespace UnitTests.TestHelper
         {
             return GetPreconfiguredAccesses().ToList();
         }
+
+        private static IEnumerable<LockAccessor> GetPreconfiguredLocksAccessors()
+        {
+            var accessor1ToOfficeLock = new LockAccessor()
+            {
+                LockAccessorId = new Guid("67359ea47c394630ac7f7fc723205ded"),
+                LockId = new Guid("56c66421-d893-4d27-867d-ae15483f9d76"), //Office Lock
+                AccessorId = "a23072bc-9150-429d-9445-cc03f8f19047", //Accessor1
+            };
+
+            var accessor1ToTunnelLock = new LockAccessor()
+            {
+                LockAccessorId = new Guid("1202bd25-36c3-476d-b0e9-7913db980068"),
+                LockId = new Guid("10f43841-21db-4ef5-9fd2-d79190bc3b39"), //Tunnel Lock
+                AccessorId = "a23072bc-9150-429d-9445-cc03f8f19047" //Accessor1
+            };
+
+            var accessor2ToTunnelLock = new LockAccessor()
+            {
+                LockAccessorId = new Guid("e009c4d6-18eb-4a3b-a4c6-af7046057705"),
+                LockId = new Guid("10f43841-21db-4ef5-9fd2-d79190bc3b39"), //Tunnel Lock
+                AccessorId = "95e7e4ff-3708-4645-91f0-4f20325869a3" //Accessor2
+            };
+
+            var accessor2ToUnopenableLock = new LockAccessor()
+            {
+                LockAccessorId = new Guid("ef7536bc-4234-4f99-ae14-8887c9fa25de"),
+                LockId = new Guid("e0a686ee-79f5-471f-a07e-f7928ee99304"), //Unopenable Lock
+                AccessorId = "95e7e4ff-3708-4645-91f0-4f20325869a3" //Accessor2
+            };
+
+            return new List<LockAccessor>
+            {
+                accessor1ToOfficeLock,
+                accessor1ToTunnelLock,
+                accessor2ToTunnelLock,
+                accessor2ToUnopenableLock
+            };
+        }
+
+        public static List<LockAccessor> GetAccessorLocksAccessors(string accessorId)
+        {
+            return GetPreconfiguredLocksAccessors()
+                                .Where(x => x.AccessorId.Equals(accessorId))
+                                .ToList();
+        }
+
+        public static List<LockAccessor> GetLockLocksAccessors(string lockId)
+        {
+            return GetPreconfiguredLocksAccessors()
+                                .Where(x => x.LockId.ToString().Equals(lockId))
+                                .ToList();
+        }
+
+        public static List<LockAccessor> GetAllLocksAccessors()
+        {
+            return GetPreconfiguredLocksAccessors().ToList();
+        }
     }
 }
