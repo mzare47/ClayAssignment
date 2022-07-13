@@ -67,6 +67,9 @@ You can use these preconfigured Usernames and Passwords:
       - Username: **accessor2**
       - Password: **Accessor2*123**
  
+ You can use download Postman json collection from link below:
+ * [Postman json collection file](https://drive.google.com/file/d/1AY2fTYEbdPEX2QE0ztYOjeIw-tYBsK2o/view?usp=sharing)
+ 
  This is my 5-minute explanation video about the **AccessControl.Api**:
  * [5-minute explanation video](https://localhost:6051)
 
