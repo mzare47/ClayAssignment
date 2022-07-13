@@ -27,7 +27,7 @@
                 overlay: true,
                 overlayClose: true,
             });
-            $('.lock-checkbox').prop('checked', oldLockStatus);
+            $('#' + lockId).prop('checked', oldLockStatus);
         }
     });
 });
