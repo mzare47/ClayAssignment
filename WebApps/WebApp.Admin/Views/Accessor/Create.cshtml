@@ -1,0 +1,55 @@
+﻿@model AccessorToAddDto
+
+<form asp-action="Create">
+    <input asp-for="Role" type="hidden" value="@Shared.Lib.Models.UserRole.Accessor"/>
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-primary">Create Accessor</h1>
+
+        <hr />
+        <div class="row">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-4 pb-3">
+                <label asp-for="Username" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-8 pb-3">
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+
+            <div class="col-4 pb-3">
+                <label asp-for="Email" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-8 pb-3">
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="col-4 pb-3">
+                <label asp-for="Password" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-8 pb-3">
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="col-5 offset-2">
+                <a asp-action="Index" class="btn-primary btn form-control ">Back to List</a>
+            </div>
+            <div class="col-5">
+                <input type="submit" value="Create" class="btn btn-success form-control" />
+
+            </div>
+
+        </div>
+
+        <div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

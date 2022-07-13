@@ -1,0 +1,76 @@
+﻿@model LockAccessMgmtDto
+
+<form asp-action="AccessManagement">
+    <input asp-for="@Model.Lock.LockId" type="hidden" value="@Model.Lock.LockId"/>
+    <input asp-for="@Model.Lock.Name" type="hidden" value="@Model.Lock.Name"/>
+    <input asp-for="@Model.Lock.Location" type="hidden" value="@Model.Lock.Location"/>
+    <input asp-for="@Model.Lock.IsLocked" type="hidden" value="@Model.Lock.IsLocked"/>
+    <input asp-for="@Model.Lock.AllowUnlocking" type="hidden" value="@Model.Lock.AllowUnlocking"/>
+    <input asp-for="@Model.AllowedAccessorIds" type="hidden" value="@Model.AllowedAccessorIds"/>
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-primary">Lock Access Management</h1>
+
+        <hr />
+        <div class="row">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Lock.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Lock.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Lock.Location)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Lock.Location)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Lock.IsLocked)
+            </dt>
+            <dd class="col-sm-10">
+                @(Model.Lock.IsLocked ? "Yes" : "No")
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Lock.AllowUnlocking)
+            </dt>
+            <dd class="col-sm-10">
+                @(Model.Lock.AllowUnlocking ? "Yes" : "No")
+            </dd>
+            <dt class="col-sm-2">
+                <label>Allowed Accessors</label>
+            </dt>
+            <dd class="col-sm-10">
+                @foreach (var accessor in ViewBag.allAccessors)
+                {
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="selectedAccessorIds" value="@accessor.Id" id="@accessor.Id" @(Model.AllowedAccessorIds.Contains(accessor.Id) ? "checked" : "")>
+                      <label class="form-check-label" for="@accessor.Id">
+                        @accessor.Username - @accessor.Email
+                      </label>
+                    </div>
+                }
+            </dd>
+
+        </div>
+        <div class="row">
+            <div class="col-5 offset-2">
+                <a asp-action="Index" class="btn-primary btn form-control ">Back to List</a>
+            </div>
+            <div class="col-5">
+                <input type="submit" value="Save" class="btn btn-success form-control" />
+
+            </div>
+        </div>
+
+        <div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

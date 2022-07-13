@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AccessDto>
+
+<br />
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+            <h1 class="text-primary">Accesses List</h1>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <td>Lock Name</td>
+                    <td>Lock Location</td>
+                    <td>Accessor Username</td>
+                    <td>Accessor Email</td>
+                    <td>Access Type</td>
+                    <td>IsSuccessful</td>
+                    <td>Reason</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var access in Model)
+                {
+                    <tr>
+                        <td>@access.Lock.Name</td>
+                        <td>@access.Lock.Location</td>
+                        <td>@access.Accessor.Username</td>
+                        <td>@access.Accessor.Email</td>
+                        <td>@(access.Accesstype.Equals(Shared.Lib.Models.LockStatus.Lock) ? "Lock" : "Unlock")</td>
+                        <td>@(access.IsSuccessful ? "Yes" : "No")</td>
+                        <td>@access.Reason</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

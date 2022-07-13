@@ -1,0 +1,44 @@
+﻿@model IEnumerable<LockDto>
+
+<br />
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+            <h1 class="text-primary">Locks List</h1>
+        </div>
+        <div class="col text-end pt-1">
+            <a asp-action="Create" asp-controller="Lock" class="btn btn-outline-primary"><i class="fa fa-plus"></i> Create New Lock</a>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <td>Name</td>
+                    <td>Location</td>
+                    <td>IsLocked</td>
+                    <td>AllowUnlocking</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var lck in Model)
+                {
+                    <tr>
+                        <td>@lck.Name</td>
+                        <td>@lck.Location</td>
+                        <td>@lck.IsLocked</td>
+                        <td>@lck.AllowUnlocking</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="Lock" class="btn btn-success" asp-route-lockId="@lck.LockId">Edit</a>
+                            <a asp-action="Delete" asp-controller="Lock" class="btn btn-danger" asp-route-lockId="@lck.LockId">Delete</a>
+                            <a asp-action="AccessManagement" asp-controller="Lock" class="btn btn-primary" asp-route-lockId="@lck.LockId">Access Management</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

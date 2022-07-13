@@ -1,0 +1,39 @@
+﻿@model IEnumerable<AccessorDto>
+
+<br />
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+            <h1 class="text-primary">Accessors List</h1>
+        </div>
+        <div class="col text-end pt-1">
+            <a asp-action="Create" asp-controller="Accessor" class="btn btn-outline-primary"><i class="fa fa-plus"></i> Create New Accessor</a>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <td>Username</td>
+                    <td>Email</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var accessor in Model)
+                {
+                    <tr>
+                        <td>@accessor.Username</td>
+                        <td>@accessor.Email</td>
+                        <td>
+                            <a asp-action="AccessManagement" asp-controller="Accessor" class="btn btn-primary" asp-route-accessorId="@accessor.Id">Access Management</a>
+                            <a asp-action="Delete" asp-controller="Accessor" class="btn btn-danger" asp-route-accessorId="@accessor.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

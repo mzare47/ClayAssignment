@@ -1,0 +1,62 @@
+﻿@model AccessorAccessMgmtDto
+
+<form asp-action="AccessManagement">
+    <input asp-for="@Model.Accessor.Id" type="hidden" value="@Model.Accessor.Id"/>
+    <input asp-for="@Model.Accessor.Username" type="hidden" value="@Model.Accessor.Username"/>
+    <input asp-for="@Model.Accessor.Email" type="hidden" value="@Model.Accessor.Email"/>
+    <input asp-for="@Model.AllowedLockIds" type="hidden" value="@Model.AllowedLockIds"/>
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-primary">Lock Access Management</h1>
+
+        <hr />
+        <div class="row">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Accessor.Username)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Accessor.Username)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Accessor.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Accessor.Email)
+            </dd>
+            <dt class="col-sm-2">
+                <label>Allowed Locks</label>
+            </dt>
+            <dd class="col-sm-10">
+                @foreach (var lck in ViewBag.allLocks)
+                {
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="selectedLockIds" value="@lck.LockId" id="@lck.LockId" @(Model.AllowedLockIds.Contains(lck.LockId) ? "checked" : "")>
+                      <label class="form-check-label" for="@lck.LockId">
+                        @lck.Name - @lck.Location
+                      </label>
+                    </div>
+                }
+            </dd>
+
+        </div>
+        <div class="row">
+            <div class="col-5 offset-2">
+                <a asp-action="Index" class="btn-primary btn form-control ">Back to List</a>
+            </div>
+            <div class="col-5">
+                <input type="submit" value="Save" class="btn btn-success form-control" />
+
+            </div>
+        </div>
+
+        <div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,75 @@
+﻿@model LockDto
+
+<form asp-action="Edit">
+    <input asp-for="LockId" type="hidden" value="@Model.LockId"/>
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-primary">Edit Lock</h1>
+
+        <hr />
+        <div class="row">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-4 pb-3">
+                <label asp-for="Name" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-8 pb-3">
+                <input asp-for="Name" class="form-control" value="@Model.Name"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="col-4 pb-3">
+                <label asp-for="Location" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-8 pb-3">
+                <input asp-for="Location" class="form-control" value="@Model.Location"/>
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+
+            <div class="col-4 pb-3">
+                <label asp-for="AllowUnlocking" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-8 pb-3">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="AllowUnlocking" id="AllowUnlockingYes" value="true" @(Model.AllowUnlocking ? "checked" : "")>
+                  <label class="form-check-label" for="AllowUnlockingYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="AllowUnlocking" id="AllowUnlockingNo" value="false" @(!Model.AllowUnlocking ? "checked" : "")>
+                  <label class="form-check-label" for="AllowUnlockingNo">No</label>
+                </div>
+            </div>
+
+            <div class="col-4 pb-3">
+                <label asp-for="IsLocked" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-8 pb-3">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="IsLocked" id="IsLockedYes" value="true" @(Model.IsLocked ? "checked" : "")>
+                  <label class="form-check-label" for="IsLockedYes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="IsLocked" id="IsLockedNo" value="false" @(!Model.IsLocked ? "checked" : "")>
+                  <label class="form-check-label" for="IsLockedNo">No</label>
+                </div>
+            </div>
+
+            <div class="col-5 offset-2">
+                <a asp-action="Index" class="btn-primary btn form-control ">Back to List</a>
+            </div>
+            <div class="col-5">
+                <input type="submit" value="Edit" class="btn btn-success form-control" />
+
+            </div>
+
+        </div>
+
+        <div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
