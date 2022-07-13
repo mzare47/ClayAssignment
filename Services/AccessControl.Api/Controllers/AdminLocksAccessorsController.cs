@@ -6,6 +6,7 @@ using Shared.Lib.Models;
 
 namespace AccessControl.Api.Controllers
 {
+    [ApiVersion("1.0")]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]

@@ -7,6 +7,7 @@ using Shared.Lib.Models;
 
 namespace AccessControl.Api.Controllers
 {
+    [ApiVersion("1.0")]
     [Authorize(Roles = $"{UserRole.Accessor}, {UserRole.Admin}")]
     [Route("api/[controller]")]
     [ApiController]

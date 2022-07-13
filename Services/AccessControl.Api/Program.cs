@@ -4,6 +4,8 @@ using AccessControl.Api.Repositories;
 using AccessControl.Api.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Shared.Lib.ExceptionHandling;
@@ -41,6 +43,19 @@ builder.Services.AddScoped<ILocksAccessorsRepository, LocksAccessorsRepository>(
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ClayDbContext>()
     .AddDefaultTokenProviders();
+
+//Add Api Version
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddApiVersioning(options =>
+{
+    options.ReportApiVersions = true;
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.ApiVersionReader = new HeaderApiVersionReader("X-API-Version");
+});
+
+builder.Services.AddVersionedApiExplorer(
+                options => options.GroupNameFormat = "'v'VVV");
 
 // Adding Authentication
 builder.Services.AddAuthentication(options =>
