@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+ 
+<div class="row justify-content-center">
+    <div class="col-3">
+        <div class="card text-white bg-primary text-center">
+          <div class="card-header">
+            Locks <i class="bi bi-lock-fill"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Locks Management</h5>
+            <a asp-action="Index" asp-controller="Lock" class="btn btn-light">Go</a>
+          </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card text-white bg-secondary text-center">
+          <div class="card-header">
+            Accessors <i class="bi bi-person-fill"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Accessors Management</h5>
+            <a asp-action="Index" asp-controller="Accessor" class="btn btn-light">Go</a>
+          </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card text-white bg-success text-center">
+          <div class="card-header">
+            Accesses <i class="bi bi-file-earmark-lock2-fill"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Accesses Report</h5>
+            <a asp-action="Index" asp-controller="Access" class="btn btn-light">Go</a>
+          </div>
+        </div>
+    </div>
+
+</div>

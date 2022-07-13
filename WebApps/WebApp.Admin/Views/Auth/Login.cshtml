@@ -1,0 +1,46 @@
+﻿@model LoginDto
+
+@{
+    Layout = "_LayoutLogin";
+}
+
+<form asp-action="Login">
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-primary">Login</h1>
+
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row justify-content-center">
+            <div class="col-2">
+                <label asp-for="Username" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-4 pb-3">
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-2">
+                <label asp-for="Password" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-4 pb-3">
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+         <div class="row justify-content-center">
+            <div class="col-6">
+                <input type="submit" value="Login" class="btn btn-success form-control" />
+
+            </div>
+        </div>
+
+        <div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
