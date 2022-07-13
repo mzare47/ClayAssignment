@@ -18,6 +18,8 @@ namespace AccessControl.Api.Data
 
         public DbSet<Access> Accesses { get; set; }
 
+        public DbSet<LockAccessor> LocksAccessors { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
