@@ -1,5 +1,4 @@
 ﻿using AccessControl.Api.Data;
-using IntegrationTests.TestHelper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
@@ -22,18 +21,6 @@ namespace IntegrationTests.Factories
 
                 services.AddDbContext<ClayDbContext>(options =>
                             options.UseInMemoryDatabase(databaseName: "ClayDbTest"));
-
-                var serviceProvider = services.BuildServiceProvider();
-
-                using (var scope = serviceProvider.CreateScope())
-                {
-                    var scopedServices = scope.ServiceProvider;
-
-                    var db = scopedServices
-                        .GetRequiredService<ClayDbContext>();
-
-                    await Helpers.ReinitializeDbForTests(db);
-                }
             });
             base.ConfigureWebHost(builder);
         }
