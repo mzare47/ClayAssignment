@@ -67,7 +67,7 @@ You can use these preconfigured Usernames and Passwords:
       - Username: **accessor2**
       - Password: **Accessor2*123**
  
- This is my short description about the **AccessControl.Api**:
- * [5 min video link](https://localhost:6051)
+ This is my 5-minute explanation video about the **AccessControl.Api**:
+ * [5-minute explanation video](https://localhost:6051)
 
 > Happy Coding! :thumbsup: :smile: :sunglasses:
