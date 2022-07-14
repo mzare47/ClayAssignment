@@ -70,7 +70,8 @@ You can use these preconfigured Usernames and Passwords:
  You can use download Postman json collection from link below:
  * [Postman json collection file](https://drive.google.com/file/d/1AY2fTYEbdPEX2QE0ztYOjeIw-tYBsK2o/view?usp=sharing)
  
- This is my 5-minute explanation video about the **AccessControl.Api**:
- * [5-minute explanation video](https://localhost:6051)
+ This is my explanation videos about the **AccessControl.Api**:
+ * [AccessControl.Api explanation video](https://drive.google.com/file/d/1ovDeRtyHqHFnu2KOul_HGAKlaZOet0xZ/view?usp=sharing)
+ * [UI explanation video](https://drive.google.com/file/d/1bB6OgLcOfGxofhGROtKNlLsEbWFGe8qX/view?usp=sharing)
 
 > Happy Coding! :thumbsup: :smile: :sunglasses:
